@@ -1,151 +1,162 @@
-# 🌊 RisingWaters-MLFloodPrediction
+# 🌊 RisingWaters - ML Flood Prediction
+
+This is a SmartBridge Internship Project to predict the **possibility of severe floods** using **Machine Learning algorithms** and a clean **Flask web interface**.
 
 ---
 
-## 📝 Project Description
+## 📁 Folder Structure
 
-Floods pose a significant threat to lives, infrastructure, and the environment. This project applies machine learning techniques to historical weather data in order to predict the **likelihood of a severe flood** based on rainfall patterns and cloud cover. The trained model is deployed using a **Flask web application**, allowing users to enter meteorological values and instantly receive a prediction.
+> Please organize your project like this in GitHub. ✅ Clickable folders show where files go.
+
+RisingWaters-MLFloodPrediction/
+│
+├── code/ # 🔧 All code files
+│ ├── Floods.ipynb # Jupyter Notebook (EDA, modeling, saving model)
+│ ├── app.py # Flask backend
+│ ├── floods.save # Trained model file
+│ ├── transform.save # Scaler file for input transformation
+│
+├── data/ # 📊 Dataset files
+│ └── flood dataset.xlsx
+│
+├── report/ # 📄 Project Report
+│ └── Flood_Prediction_Report.docx
+│
+├── screenshots/ # 🖼️ Screenshots of UI
+│ ├── homepage.png
+│ ├── prediction_form.png
+│ └── prediction_result.png
+│
+├── static/ # 🎨 Static assets (CSS & images)
+│ ├── css/
+│ │ └── styles.css
+│ └── images/
+│ └── flood-bg1.jpg
+│
+├── templates/ # 🌐 HTML files
+│ ├── home.html
+│ ├── index.html
+│ ├── chance.html
+│ └── no_chance.html
+│
+└── README.md # 📘 This documentation file
 
 ---
 
-## 📊 Dataset Overview
+## 📝 Project Overview
 
-- **File:** `flood dataset.xlsx`
-- **Total Records:** 115
-- **Target Variable:** `flood`  
-  *(0: No Flood, 1: Flood)*
-
-### ✅ Final Input Features:
-- Cloud Cover
-- ANNUAL (Annual Rainfall)
-- Jan-Feb Rainfall
-- Mar-May Rainfall
-- Jun-Sep Rainfall
+Floods pose serious risks to life and infrastructure. Our project uses historical climate and rainfall data to classify whether a **severe flood is likely** using ML models and a Flask-based prediction form.
 
 ---
 
-## 🧪 Machine Learning Models
+## 💡 Input Features
+
+- Cloud Cover (%)
+- Annual Rainfall (mm)
+- Jan–Feb Rainfall (mm)
+- Mar–May Rainfall (mm)
+- Jun–Sep Rainfall (mm)
+
+---
+
+## ⚙️ ML Models Compared
 
 | Model           | Accuracy |
 |----------------|----------|
-| Decision Tree  | 100%     |
-| Random Forest  | 100%     |
-| XGBoost        | 100%     |
-| KNN            | 95.6%    |
+| Decision Tree   | 96.55%   |
+| Random Forest ✅| 96.55%   |
+| KNN             | 89.65%   |
+| XGBoost         | 96.55%   |
+
+📌 **Selected Model:** Random Forest  
+💾 Saved using `joblib` → [`code/floods.save`](./code/floods.save)
+
+---
+
+## 📈 Evaluation Metrics
 
 All models were evaluated using:
+
 - ✅ Accuracy
 - ✅ Confusion Matrix
-- ✅ Classification Report *(Precision, Recall, F1-score)*
-
-### ⚠️ Overfitting Observation
-
-The Decision Tree, Random Forest, and XGBoost models achieved **100% accuracy** on the test set. While this appears perfect, it often indicates **overfitting**, especially when:
-- The dataset is small (115 samples)
-- The test set is not diverse enough
-- Models are over-tuned to training data
-
-> 🔍 These models might **not generalize well** to unseen or real-world data.
-
-#### 🔧 Future Fixes:
-- Implement cross-validation
-- Use techniques like pruning or regularization
-- Expand the dataset with samples from different years or regions
+- ✅ Classification Report (Precision, Recall, F1-score)
 
 ---
 
-## 📈 Visualizations
+## 🌐 Web Application
 
-The project includes the following visual analysis:
-
-- 📊 Distribution plots and boxplots for each input feature  
-- 🔥 Correlation heatmap  
-- 📉 Confusion matrix heatmaps for each model  
-- 📊 Bar chart comparing model accuracies  
-
-📁 All visualizations are available in the [`screenshots/`](screenshots/) folder.
+| Page              | File                   | Description |
+|------------------|------------------------|-------------|
+| Homepage         | `home.html`            | Project intro with background image
+| Prediction Page  | `index.html`           | Input form for 5 climate features
+| Result Page (Yes)| `chance.html`          | Displays "Possibility of Severe Flood"
+| Result Page (No) | `no_chance.html`       | Displays "No Possibility of Severe Flood"
 
 ---
 
-## 🌐 Web Application (Flask)
+## 🧪 How to Run the App
 
-A user-friendly web application built using **Flask + HTML + Bootstrap**.
-
-### 🔹 Input Form Fields:
-- Cloud Cover
-- ANNUAL
-- Jan-Feb Rainfall
-- Mar-May Rainfall
-- Jun-Sep Rainfall
-
-### 🔸 Web Pages:
-- `home.html`: Project intro and overview  
-- `index.html`: User input form  
-- `chance.html`: Prediction = Possibility of Flood  
-- `no_chance.html`: Prediction = No Possibility of Flood
+### 1. Install required libraries:
+```bash
+pip install flask pandas numpy scikit-learn xgboost joblib openpyxl
 
 ---
 
-## 💾 Model & Scaler
+## 📝 Project Overview
 
-- `floods.save`: Trained Random Forest model  
-- `transform.save`: StandardScaler object for consistent input scaling
-
-Both are used by the Flask backend to perform real-time predictions.
+Floods pose serious risks to life and infrastructure. Our project uses historical climate and rainfall data to classify whether a **severe flood is likely** using ML models and a Flask-based prediction form.
 
 ---
 
-## 📦 Project Structure
+## 💡 Input Features
 
-RisingWaters-MLFloodPrediction/
-├── code/ # Jupyter notebook & app.py
-├── data/ # Excel dataset
-├── screenshots/ # Visual output & web app screenshots
-├── report/ # Project report (docx)
-├── Flask/ # Flask app folder with templates/static/model
-└── README.md # This documentation file
-
+- Cloud Cover (%)
+- Annual Rainfall (mm)
+- Jan–Feb Rainfall (mm)
+- Mar–May Rainfall (mm)
+- Jun–Sep Rainfall (mm)
 
 ---
 
-## 🎥 Demo Video
+## ⚙️ ML Models Compared
 
-📽️ [Click here to watch the project demo](https://your-demo-video-link-here)
+| Model           | Accuracy |
+|----------------|----------|
+| Decision Tree   | 96.55%   |
+| Random Forest ✅| 96.55%   |
+| KNN             | 89.65%   |
+| XGBoost         | 96.55%   |
 
-> Replace this link with your actual video (Google Drive or YouTube)
-
----
-
-## 🔗 GitHub Repository Link
-
-This is the repository you're currently viewing:  
-🔗 **[https://github.com/DURGAMANOJ113/RisingWaters-MLFloodPrediction](https://github.com/DURGAMANOJ113/RisingWaters-MLFloodPrediction)**
-
----
-
-## ✅ Project Checklist
-
-- [x] Dataset loaded and cleaned  
-- [x] EDA performed and visualized  
-- [x] Models trained and evaluated  
-- [x] Best model saved (`floods.save`)  
-- [x] Flask app developed and tested  
-- [x] README and documentation added  
-- [x] GitHub repository structured  
-- [x] Screenshots uploaded  
-- [x] Demo video recorded
+📌 **Selected Model:** Random Forest  
+💾 Saved using `joblib` → [`code/floods.save`](./code/floods.save)
 
 ---
 
-## 🚀 Future Enhancements
+## 📈 Evaluation Metrics
 
-- 🌍 Train with data from multiple regions  
-- 📈 Add flood severity prediction (e.g., mild, moderate, severe)  
-- 🤖 Integrate rainfall forecasting using LSTM or Prophet  
-- ☁️ Deploy the Flask app to Render, Vercel, or AWS  
-- 📡 Connect real-time weather APIs for live predictions
+All models were evaluated using:
+
+- ✅ Accuracy
+- ✅ Confusion Matrix
+- ✅ Classification Report (Precision, Recall, F1-score)
 
 ---
 
-> Made with ❤️ by **DURGAMANOJ113**  
-> SmartBridge Internship – Flood Prediction ML Project
+## 🌐 Web Application
+
+| Page              | File                   | Description |
+|------------------|------------------------|-------------|
+| Homepage         | `home.html`            | Project intro with background image
+| Prediction Page  | `index.html`           | Input form for 5 climate features
+| Result Page (Yes)| `chance.html`          | Displays "Possibility of Severe Flood"
+| Result Page (No) | `no_chance.html`       | Displays "No Possibility of Severe Flood"
+
+---
+
+## 🧪 How to Run the App
+
+### 1. Install required libraries:
+```bash
+pip install flask pandas numpy scikit-learn xgboost joblib openpyxl
+cd code
+python app.py
