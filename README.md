@@ -11,7 +11,7 @@ Floods pose a significant threat to lives, infrastructure, and the environment. 
 ## 📊 Dataset Overview
 
 - **File:** `flood dataset.xlsx`
-- **Total Records:** 725
+- **Total Records:** 115
 - **Target Variable:** `flood`  
   *(0: No Flood, 1: Flood)*
 
@@ -41,7 +41,7 @@ All models were evaluated using:
 ### ⚠️ Overfitting Observation
 
 The Decision Tree, Random Forest, and XGBoost models achieved **100% accuracy** on the test set. While this appears perfect, it often indicates **overfitting**, especially when:
-- The dataset is small (725 samples)
+- The dataset is small (115 samples)
 - The test set is not diverse enough
 - Models are over-tuned to training data
 
